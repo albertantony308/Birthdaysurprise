@@ -1,8 +1,8 @@
-# Birthday Surprise Website 🎂
+# Birthday Surprise Website
 
 A beautifully animated, interactive web experience built to deliver a stunning digital birthday surprise! This project uses a step-by-step cinematic sequence including a lock screen, virtual gifts, typewriter texts, and engaging interactive elements (like virtually blowing out a candle).
 
-## 🚀 Key Features
+## Key Features
 
 * **Interactive Pin Lock:** A modern, frosted-glass numerical keypad.
 * **Cinematic Sequencing:** Multi-screen progression revealing a narrative.
@@ -10,11 +10,11 @@ A beautifully animated, interactive web experience built to deliver a stunning d
 * **Festive Mode & Confetti:** A celebration sequence seamlessly powered by `canvas-confetti` and shifting CSS gradients.
 * **Responsive Layout:** Perfectly aligned and functional entirely on mobile or desktop devices.
 
-## 🔐 Log In / Passcode
+## Log In / Passcode
 
 The default pin required to unlock the birthday sequence is: **`2042`**
 
-## 🎨 How to Personalize for Someone Else
+## How to Personalize for Someone Else
 
 You can easily adapt and remix this template for anyone by swapping out the assets and text.
 
@@ -32,7 +32,7 @@ You can easily adapt and remix this template for anyone by swapping out the asse
    * `cake-blown-static.png` (or `.gif` / `.jpg`) - The static, unlit candle frame shown after blowing it out.
    * `last-memories.jpg` - The picture featured in the final polaroid frame.
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 * **HTML5 & CSS3** (Vanilla)
 * **JavaScript** (Vanilla ECMAScript)
