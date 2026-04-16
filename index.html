@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Surprise</title>
+    <!-- Adding Google Fonts for a premium look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Outfit:wght@400;600;800&family=Pacifico&family=Playfair+Display:ital,wght@1,600;1,800&family=Poppins:ital,wght@1,400;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Confetti Library for Festive Burst -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+
+<body>
+
+    <div id="step-1" class="screen active">
+        <div class="container">
+            <div class="polaroid-section">
+                <div class="polaroid">
+                    <img src="teddy.gif" alt="Teddy" class="main-gif">
+                </div>
+            </div>
+            <div class="interaction-section">
+                <p class="instruction-text">Entre a passcode</p>
+                <div class="pin-dots">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+
+                <div class="keypad">
+                    <button onclick="addPin(1)">1</button><button onclick="addPin(2)">2</button><button
+                        onclick="addPin(3)">3</button>
+                    <button onclick="addPin(4)">4</button><button onclick="addPin(5)">5</button><button
+                        onclick="addPin(6)">6</button>
+                    <button onclick="addPin(7)">7</button><button onclick="addPin(8)">8</button><button
+                        onclick="addPin(9)">9</button>
+                    <button onclick="addPin('*')">*</button><button onclick="addPin(0)">0</button><button
+                        onclick="addPin('#')">#</button>
+                </div>
+
+                <div id="status-container">
+                    <button id="status-btn" class="status-btn hidden" onclick="handleStatusClick()">NEXT</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="step-2" class="screen">
+        <div class="container single">
+            <img src="happy-bday.gif" class="full-gif">
+            <button class="next-btn" onclick="nextStep(3)">NEXT</button>
+        </div>
+    </div>
+
+    <div id="step-3" class="screen">
+        <div class="container single">
+            <p class="surprise-text">Are you ready for a surprise?</p>
+            <img src="ready-question.gif" class="full-gif">
+            <div class="btn-row">
+                <button class="yes-btn action-btn" onclick="nextStep(5)">YES!</button>
+                <button class="no-btn action-btn" onclick="nextStep(4)">NO</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="step-4" class="screen">
+        <div class="container single">
+            <p class="how-dare-text">How dare you!</p>
+            <img src="no-response.gif" class="full-gif">
+            <button class="try-again-btn action-btn" onclick="nextStep(3)">TRY AGAIN</button>
+        </div>
+    </div>
+
+    <div id="step-5" class="screen">
+        <div class="container single">
+            <p class="gift-title">A Gift for You!</p>
+            <div class="gift-row">
+                <img src="gift-box.gif" class="gift-box" onclick="openGift(this)">
+                <img src="gift-box.gif" class="gift-box" onclick="openGift(this)">
+                <img src="gift-box.gif" class="gift-box" onclick="openGift(this)">
+            </div>
+            <p class="sub-text">Click any gift to open</p>
+        </div>
+    </div>
+
+    <div id="step-6" class="screen">
+        <div class="container single">
+            <div class="wish-text-container">
+                <p id="wish-text" class="make-wish-text">Make a wish</p>
+            </div>
+            <div class="cake-wrapper">
+                <img src="cake-lit.gif" id="cake-img" class="full-gif" style="padding-bottom: 50px;">
+                <button id="blow-btn" class="action-btn make-wish-btn" onclick="blowCake()">BLOW</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

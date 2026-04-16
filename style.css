@@ -1,0 +1,462 @@
+body {
+    margin: 0;
+    background-color: #5ea3db;
+    font-family: 'Outfit', 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    overflow-x: hidden; /* Prevents confetti particles from causing horizontal scrollbars */
+    transition: background 1.5s ease-in-out;
+}
+
+/* --- FESTIVE GRADIENT ANIMATION --- */
+body.festive-mode {
+    background: linear-gradient(-45deg, #FF6B6B, #4ECDC4, #FFE66D, #5ea3db);
+    background-size: 400% 400%;
+    animation: festiveGradient 5s ease infinite;
+}
+
+@keyframes festiveGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.screen {
+    display: none;
+    width: 100%;
+    justify-content: center;
+}
+
+.screen.active {
+    display: flex;
+}
+
+/* The Main Container */
+.container {
+    display: flex;
+    flex-direction: row;
+    /* Desktop: Side by Side */
+    align-items: center;
+    gap: 40px;
+    background: transparent;
+    color: white;
+    max-width: 900px;
+}
+
+/* For screens that only have one element (like the Greet GIF) */
+.container.single {
+    flex-direction: column;
+    text-align: center;
+}
+
+/* Polaroid Styling */
+.polaroid {
+    background: white;
+    padding: 15px 15px 45px 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    width: 300px;
+    transform: rotate(-2deg);
+}
+
+.polaroid img {
+    width: 100%;
+    display: block;
+    border: 1px solid #eee;
+}
+
+/* Interaction Section */
+.interaction-section {
+    text-align: center;
+    width: 300px;
+}
+
+/* Keypad Grid */
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.keypad button {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid white;
+    color: white;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.keypad button:active {
+    background: white;
+    color: #5ea3db;
+}
+
+/* Pin Dots */
+.pin-dots {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 15px 0;
+}
+
+.dot {
+    width: 14px;
+    height: 14px;
+    border: 2px solid white;
+    border-radius: 50%;
+}
+
+.dot.filled {
+    background: white;
+}
+
+/* Mobile View (Responsive Breakpoint) */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        /* Stacks vertically */
+        gap: 20px;
+    }
+
+    .polaroid {
+        width: 260px;
+        transform: rotate(0deg);
+    }
+
+    .interaction-section {
+        width: 100%;
+    }
+}
+
+/* Helper Classes */
+.full-gif {
+    max-width: 350px;
+    width: 100%;
+    border-radius: 15px;
+}
+
+.gift-row img {
+    width: 70px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.next-btn {
+    background: white;
+    color: #5ea3db;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#status-container {
+    height: 45px;
+    margin-top: 30px;
+    /* Add space between keypad and button */
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.status-btn {
+    padding: 12px 20px;
+    border-radius: 30px;
+    /* Pill shape looks modern */
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 210px;
+    /* Matches the width of the 3 keypad buttons + gaps */
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.status-btn.next {
+    background-color: #ffffff;
+    color: #5ea3db;
+}
+
+.status-btn.invalid {
+    background-color: #ff4d4d;
+    color: white;
+    cursor: default;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Step 3 Special Styles */
+.surprise-text {
+    font-family: 'Pacifico', cursive;
+    font-size: 34px;
+    color: #ffeb3b;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    margin: 15px 0 25px 0;
+    letter-spacing: 1px;
+}
+
+.btn-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.action-btn {
+    padding: 12px 35px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.yes-btn {
+    background-color: #ffffff;
+    color: #ff4d4d;
+}
+
+.yes-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+.no-btn {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid white;
+    padding: 10px 33px;
+    /* Adjusting padding to account for the border */
+    backdrop-filter: blur(5px);
+}
+
+.no-btn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+}
+
+/* Step 4 Special Styles */
+.how-dare-text {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    /* Extra bold */
+    text-transform: uppercase;
+    font-size: 42px;
+    /* Slightly adjusted for the new font structure */
+    color: #ffffff;
+    /* Crisp white for high contrast */
+    text-shadow:
+        3px 3px 0 #ff4d4d,
+        /* Thick offset shadow */
+        -2px -2px 0 #ff4d4d,
+        2px -2px 0 #ff4d4d,
+        -2px 2px 0 #ff4d4d,
+        2px 2px 0 #ff4d4d;
+    /* Creates a solid outline effect */
+    margin: 10px 0 25px 0;
+    letter-spacing: 3px;
+    display: inline-block;
+}
+
+.try-again-btn {
+    background-color: #ff4d4d;
+    color: white;
+    margin-top: 25px;
+}
+
+.try-again-btn:hover {
+    background-color: #ff3333;
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(255, 77, 77, 0.4);
+}
+
+/* Step 5 Special Styles */
+.gift-title {
+    font-family: 'Pacifico', cursive;
+    /* Bringing back the beautiful cursive here */
+    font-size: 52px;
+    color: #ffeb3b;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+    margin: 10px 0 35px 0;
+}
+
+.gift-box {
+    width: 90px;
+    margin: 10px 15px;
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.gift-box:hover {
+    transform: scale(1.15) translateY(-5px);
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.2));
+}
+
+.sub-text {
+    font-family: 'Outfit', sans-serif;
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.9);
+    font-style: italic;
+    margin-top: 30px;
+    letter-spacing: 1px;
+}
+
+/* Vibration Animation */
+@keyframes vibrate {
+    0% {
+        transform: translate(0) scale(1.15);
+    }
+
+    20% {
+        transform: translate(-4px, 4px) rotate(-5deg) scale(1.15);
+    }
+
+    40% {
+        transform: translate(-4px, -4px) rotate(5deg) scale(1.15);
+    }
+
+    60% {
+        transform: translate(4px, 4px) rotate(-5deg) scale(1.15);
+    }
+
+    80% {
+        transform: translate(4px, -4px) rotate(5deg) scale(1.15);
+    }
+
+    100% {
+        transform: translate(0) scale(1.15);
+    }
+}
+
+.vibrating {
+    animation: vibrate 0.15s linear infinite;
+    pointer-events: none;
+    /* Prevent multiple clicks while animating */
+}
+
+/* Step 6 Special Styles */
+#step-6 .container {
+    /* Standard flow */
+}
+
+/* Container to keep text stable vertically inside the card without moving the cake */
+.wish-text-container {
+    height: 125px;
+    /* Safely accommodates the 2-line structure without shifting the layout */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100%;
+    margin-bottom: -15px;
+    /* Keeps text directly right above the cake */
+    z-index: 2;
+    position: relative;
+}
+
+.make-wish-text {
+    font-family: 'Pacifico', cursive;
+    font-size: 46px;
+    color: #ffeb3b;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+    margin: 0;
+    margin-bottom: 25px;
+}
+
+.cake-wrapper {
+    position: relative;
+    display: inline-block;
+    max-width: 350px;
+    width: 100%;
+}
+
+.cake-wrapper img,
+.cake-wrapper canvas {
+    display: block;
+    width: 100%;
+}
+
+.make-wish-btn {
+    background-color: rgba(94, 163, 219, 0.85);
+    color: white;
+    border: 3px solid white;
+    padding: 10px 40px;
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    z-index: 10;
+}
+
+.make-wish-btn:hover {
+    background-color: #ffffff;
+    color: #5ea3db;
+    transform: translateX(-50%) translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.5);
+}
+
+.animated-bday-text.multiline-typewriter {
+    font-family: 'Dancing Script', cursive;
+    font-size: 60px;
+    /* Reduced from massive 66px so it safely stays within viewport bounds */
+    font-weight: 700;
+    line-height: 1.25;
+    color: #ffeb3b;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+    margin: 0;
+    margin-bottom: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Base lines for multiline typewriter */
+.type-line1 {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: none;
+    /* Removed the cursor effect entirely */
+    width: max-content;
+    max-width: 0;
+    padding-top: 500px;
+    font-family: 'Poppins', sans-serif;
+    font-style: italic;
+    font-size: smaller;
+    color: white;
+}
+
+.type-line1 {
+    /* Tightens the vertical line gap gracefully */
+    animation: typewriter 1.4s steps(15, end) forwards;
+}
+
+/* Typewriter animations */
+@keyframes typewriter {
+    0% {
+        max-width: 0;
+    }
+
+    100% {
+        max-width: 100%;
+    }
+}
